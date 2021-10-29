@@ -2,7 +2,7 @@
 
 Sample program
 
-Running the benchmark
+To run the benchmark
 
 ```
 cargo build 
