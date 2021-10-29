@@ -2,7 +2,7 @@
 
 ### Key Concepts
 
-- Rust primary focus is on performance and safety
+- Rust's primary focus is on performance and safety
 - Offers safe concurrency and memory safety without garbage collection
 - Memory management is achived through *Ownership* concept
   - Each value in Rust has a variable that’s called its *owner*
