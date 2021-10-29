@@ -1,2 +1,14 @@
-# go-vs-rust
-Comparison of Go and Rust languages features for efficient systems programming.
+# Fibonacci
+
+Sample program
+
+Running the benchmark
+
+```
+cargo build 
+```
+```
+cargo bench 
+```
+
+Will be adding detailed steps later
