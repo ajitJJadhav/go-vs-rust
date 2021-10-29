@@ -1,0 +1,1 @@
+/home/arjun/ucsb/runtime/go-vs-rust/rust/benchmarks/fibocrate/target/debug/fibocrate: /home/arjun/ucsb/runtime/go-vs-rust/rust/benchmarks/fibocrate/src/lib.rs /home/arjun/ucsb/runtime/go-vs-rust/rust/benchmarks/fibocrate/src/main.rs
