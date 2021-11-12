@@ -6,7 +6,7 @@ We tested a simple iteration loop with Rayon's library and found runtime improve
 
 Below is the running time captured using Criterion benchmark tool. 
 
-| Input Size  | Sequential (us) | Parallel (us) |
+| Input Size  | Sequential (μs) | Parallel (μs) |
 | ----------- | --------------- | ------------- |
 |   50000     |    13.06        |     34.22     |
 |  100000     |    25.69        |     40.02     |
