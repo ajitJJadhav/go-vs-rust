@@ -40,7 +40,7 @@ fn bottom_up_tree<'r>(arena: &'r Bump, depth: i32) -> &'r Tree<'r> {
 
 fn inner(depth: i32, iterations: i32) -> String {
     let chk: i32 = (0..iterations)
-        .into_iter()
+        .into_par_iter()
         .map(|_| {
             let arena = Bump::new();
             let a = bottom_up_tree(&arena, depth);
@@ -70,7 +70,7 @@ pub fn binarytree() {
     let long_lived_tree = bottom_up_tree(&long_lived_arena, max_depth);
 
     let messages = (min_depth / 2..=max_depth / 2)
-        .into_iter()
+        .into_par_iter()
         .map(|half_depth| {
             let depth = half_depth * 2;
             let iterations = 1 << ((max_depth - depth + min_depth) as u32);
