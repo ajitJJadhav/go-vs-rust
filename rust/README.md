@@ -14,6 +14,6 @@
 - Rust’s ownership and type checking makes sure any concurrent errors are identified during compile time rather than runtime
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-###  Profiling and Benchmarking
+### Benchmarking
 
-We are planning to use [Heaptrack](https://github.com/KDE/heaptrack) for memory profiling and [Criterion.rs](https://github.com/bheisler/criterion.rs) for benchmarking.
+We are planning to use [Criterion.rs](https://github.com/bheisler/criterion.rs) for benchmarking.
