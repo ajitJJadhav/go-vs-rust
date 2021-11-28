@@ -3,14 +3,14 @@ import (
 	"fmt"
 	"time"
 	"math/rand"
-	// "runtime"
+	"runtime"
 	"sync"
 )
 
-// func init() {
-//     numcpu := runtime.NumCPU()
-//     runtime.GOMAXPROCS(numcpu) // Try to use all available CPUs.
-// }
+func init() {
+    // numcpu := runtime.NumCPU()
+    runtime.GOMAXPROCS(8) // Try to use all available CPUs.
+}
 
 // Convolve computes w = u * v, where w[k] = Σ u[i]*v[j], i + j = k.
 // Precondition: len(u) > 0, len(v) > 0.
@@ -61,7 +61,7 @@ func Convolve(u []uint64) uint64 {
 
     // Divide w into work units that take ~100μs-1ms to compute.
     // size := max(1, 1000000/n)
-	size := 10000
+	size := 200000
 
     var wg sync.WaitGroup
     for i, j := 0, size; i < n; i, j = j, j+size {
@@ -72,7 +72,7 @@ func Convolve(u []uint64) uint64 {
         wg.Add(1)
         go func(i, j int) {
             for k := i; k < j; k++ {
-                ans += u[i]*u[i]
+                ans += u[k]*u[k]
             }
             wg.Done()
         }(i, j)
@@ -82,16 +82,16 @@ func Convolve(u []uint64) uint64 {
 }
 
 func main() {
-	start := time.Now()
 	
-	var s [2000000000]uint64
-	n := 2000000000
+	
+	var s [2000000]uint64
+	n := 2000000
     for i := 0; i < n; i++ {
         s[i] = uint64(rand.Intn(100))
     }
-	ans := Convolve(s[:])
 
-	
+	start := time.Now()
+	ans := Convolve(s[:])
 	elapsed := time.Since(start)
 	fmt.Println("Execution time: %s", elapsed)
 	fmt.Println("Total: ", ans)
