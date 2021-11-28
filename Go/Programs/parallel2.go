@@ -3,14 +3,14 @@ import (
 	"fmt"
 	"time"
 	"math/rand"
-	"runtime"
+	// "runtime"
 	"sync"
 )
 
-func init() {
-    numcpu := runtime.NumCPU()
-    runtime.GOMAXPROCS(numcpu) // Try to use all available CPUs.
-}
+// func init() {
+//     numcpu := runtime.NumCPU()
+//     runtime.GOMAXPROCS(numcpu) // Try to use all available CPUs.
+// }
 
 // Convolve computes w = u * v, where w[k] = Σ u[i]*v[j], i + j = k.
 // Precondition: len(u) > 0, len(v) > 0.
@@ -38,22 +38,30 @@ return y
 }
 
 // mul returns Σ u[i]*v[j], i + j = k.
-func mul(u, v []uint64, k int) uint64 {
-    var res uint64
-    n := min(k+1, len(u))
-    j := min(k, len(v)-1)
-    for i := k - j; i < n; i, j = i+1, j-1 {
-        res += u[i] * v[j]
-    }
-    return res
-}
+// func mul(u, v []uint64, k int) uint64 {
+//     var res uint64
+//     for i := 0; i < len(u); {
+//         res += u[i] * v[j]
+//     }
+//     return res
+// }
+
+func sum(array []int) int {  
+	result := 0  
+	for _, v := range array {  
+	 result += v  
+	}  
+	return result  
+   }
+
 func Convolve(u []uint64) uint64 {
 	var ans uint64
 	ans = 0
     n := len(u)
 
     // Divide w into work units that take ~100μs-1ms to compute.
-    size := max(1, 1000000/n)
+    // size := max(1, 1000000/n)
+	size := 10000
 
     var wg sync.WaitGroup
     for i, j := 0, size; i < n; i, j = j, j+size {
@@ -64,27 +72,27 @@ func Convolve(u []uint64) uint64 {
         wg.Add(1)
         go func(i, j int) {
             for k := i; k < j; k++ {
-                w[k] = mul(u, v, k)
+                ans += u[i]*u[i]
             }
             wg.Done()
         }(i, j)
     }
     wg.Wait()
-    return w
+    return ans
 }
 
 func main() {
 	start := time.Now()
 	
-	var s [20000]uint64
-	n := 20000
+	var s [2000000000]uint64
+	n := 2000000000
     for i := 0; i < n; i++ {
         s[i] = uint64(rand.Intn(100))
     }
-	ans := Convolve(s[:], s[:])
+	ans := Convolve(s[:])
 
 	
 	elapsed := time.Since(start)
 	fmt.Println("Execution time: %s", elapsed)
-	fmt.Println("Total: ", ans[0])
+	fmt.Println("Total: ", ans)
 }
