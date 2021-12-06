@@ -16,4 +16,4 @@
 
 ### Benchmarking
 
-We are planning to use [Criterion.rs](https://github.com/bheisler/criterion.rs) for benchmarking.
+Benchmarking was done using [Criterion.rs](https://github.com/bheisler/criterion.rs).
