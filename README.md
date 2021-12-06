@@ -29,7 +29,7 @@ We used sum of squares implementation (both parallel and non-parallel codes) for
 
 #### Rust:
 
-To run the Rust code, go to '/rust/programs/sum_of_squares` and run the code using the following commands:
+To run the Rust code, go to `/rust/programs/sum_of_squares` and run the code using the following commands:
 
 ```
 cargo build
