@@ -10,5 +10,3 @@ cargo build
 ```
 cargo bench 
 ```
-
-Will be adding detailed steps later
