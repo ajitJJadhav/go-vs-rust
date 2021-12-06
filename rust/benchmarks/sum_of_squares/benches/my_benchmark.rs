@@ -11,7 +11,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         arr[i] = rng.gen_range(0..10);
     }
 
-    group.bench_function("sst 2M_1", |b| b.iter(|| sum_of_squares(&arr, 1)));
+    /*group.bench_function("sst 2M_1", |b| b.iter(|| sum_of_squares(&arr, 1)));
     group.bench_function("sst 2M_2", |b| b.iter(|| sum_of_squares(&arr, 2)));
     group.bench_function("sst 2M_4", |b| b.iter(|| sum_of_squares(&arr, 4)));
     group.bench_function("sst 2M_8", |b| b.iter(|| sum_of_squares(&arr, 8)));
@@ -21,7 +21,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
     group.bench_function("sspt 2M_2", |b| b.iter(|| sum_of_squares_parallel(&arr, 2)));
     group.bench_function("sspt 2M_4", |b| b.iter(|| sum_of_squares_parallel(&arr, 4)));
     group.bench_function("sspt 2M_8", |b| b.iter(|| sum_of_squares_parallel(&arr, 8)));
-    group.bench_function("sspt 2M_16", |b| b.iter(|| sum_of_squares_parallel(&arr, 16)));
+    group.bench_function("sspt 2M_16", |b| b.iter(|| sum_of_squares_parallel(&arr, 16)));*/
 
     group.bench_function("ss 2M", |b| b.iter(|| sos(&arr)));
 
